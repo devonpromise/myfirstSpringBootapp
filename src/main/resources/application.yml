@@ -1,0 +1,58 @@
+spring:
+  profiles:
+    active: test
+
+app:
+  version: 1.0.0
+
+---
+
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=conference_demo;encrypt=true;trustServerCertificate=true;
+    username: sa
+    password: P@ssword123
+    jpa:
+      show-sql: true
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2019Dialect
+        ddl-auto: update
+  config:
+    activate:
+      on-profile: test
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: false
+
+
+---
+
+logging:
+  level:
+    org: WARN
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost:1433;databaseName=conference_demo;encrypt=true;trustServerCertificate=true;
+    username: sa
+    password: P@ssword123
+    jpa:
+      show-sql: true
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServer2019Dialect
+        ddl-auto: update
+  config:
+    activate:
+      on-profile: prod
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    enabled: false
